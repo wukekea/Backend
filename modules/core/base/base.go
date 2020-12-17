@@ -11,6 +11,11 @@ const (
 	ServerErr
 	ParamErr
 )
+const (
+	MongodbUri        string = "mongodb://localhost:27017"
+	DatabaseBlog      string = "blog"
+	CollectionAccount string = "account"
+)
 
 type BasedResponse struct {
 	Ret  Code         `json:"ret" binding:"required"` // 为1：正常返回；2：服务错误；3：参数错误
