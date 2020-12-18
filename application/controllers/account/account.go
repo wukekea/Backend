@@ -11,3 +11,8 @@ func Register(context *gin.Context) {
 func Login(context *gin.Context) {
 	login(context)
 }
+
+// 测试recover中间件
+func MyPanic(context *gin.Context) {
+	myPanic(context)
+}
