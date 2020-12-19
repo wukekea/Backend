@@ -12,8 +12,8 @@ import (
 )
 
 type LoginParam struct {
-	Name     string `json:"name" binding:"required"`
-	Password string `json:"password" binding:"required"`
+	Name     string `json:"name" binding:"required" example:"wkk"`
+	Password string `json:"password" binding:"required" example:"12345679"`
 }
 
 func Login(param LoginParam) (*api.AccountInfo, error) {
