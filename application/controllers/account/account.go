@@ -2,7 +2,15 @@ package account
 
 import "github.com/gin-gonic/gin"
 
-// 注册账号
+// Register godoc
+// @Summary Register An Account.
+// @Description Using name and password to register an account. Sex, hobbies, age and so on is optional.
+// @Accept json
+// @Produce json
+// @Param RegisterParam body account.RegisterParam true "required param."
+// @Success 200 {object} base.BasedResponse
+// @Header 200 {string} Token "qwerty"
+// @Router /account/register [PUT]
 func Register(context *gin.Context) {
 	register(context)
 }

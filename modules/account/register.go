@@ -11,15 +11,14 @@ import (
 	"time"
 )
 
-
 type RegisterParam struct {
-	Name     string `json:"name" binding:"required"`
-	Password string `json:"password" binding:"required"`
+	Name     string `json:"name" binding:"required" example:"wkk"`
+	Password string `json:"password" binding:"required" example:"123456789"`
 
-	Age     int8        `json:"age"`     // 用户年龄
-	Sex     int8        `json:"sex"`     // 用户性别；0：未知；1：男；2：女
-	Hobbies []api.Hobby `json:"hobbies"` // 用户爱好
-	Address string      `json:"address"` // 用户地址
+	Age     int8        `json:"age" example:"20"`        // 用户年龄
+	Sex     int8        `json:"sex" example:"1"`         // 用户性别；0：未知；1：男；2：女
+	Hobbies []api.Hobby `json:"hobbies"`                 // 用户爱好
+	Address string      `json:"address" example:"China"` // 用户地址
 }
 
 func Register(param RegisterParam) (ID interface{}, err error) {
