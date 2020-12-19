@@ -2,17 +2,43 @@ package account
 
 import "github.com/gin-gonic/gin"
 
-// 注册账号
+// Register godoc
+// @Summary Register An Account.
+// @Description Using name and password to register an account. Sex, hobbies, age and so on is optional.
+// @Tags account
+// @Accept json
+// @Produce json
+// @Param RegisterParam body account.RegisterParam true "required param."
+// @Success 200 {object} base.BasedResponse
+// @Header 200 {string} Token "qwerty"
+// @Router /account/register [PUT]
 func Register(context *gin.Context) {
 	register(context)
 }
 
-// 登录账号
+// Login godoc
+// @Summary Login An Account.
+// @Description Using name and password to Login an account.
+// @Tags account
+// @Accept json
+// @Produce json
+// @Param LoginParam body account.LoginParam true "required param."
+// @Success 200 {object} api.AccountInfo
+// @Header 200 {string} Token "qwerty"
+// @Router /account/login [POST]
 func Login(context *gin.Context) {
 	login(context)
 }
 
-// 测试recover中间件
+// MyPanic godoc
+// @Summary MyPanic.
+// @Description Test panic and recovery function.
+// @Tags account
+// @Accept json
+// @Produce json
+// @Success 200 {string} string
+// @Header 200 {string} Token "qwerty"
+// @Router /account/panic [GET]
 func MyPanic(context *gin.Context) {
 	myPanic(context)
 }
