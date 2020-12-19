@@ -2,6 +2,7 @@ package account
 
 import (
 	"Backend/modules/core/api"
+	"Backend/modules/core/base"
 	"context"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -10,11 +11,6 @@ import (
 	"time"
 )
 
-const (
-	MongodbUri        string = "mongodb://localhost:27017"
-	DatabaseBlog      string = "blog"
-	CollectionAccount string = "account"
-)
 
 type RegisterParam struct {
 	Name     string `json:"name" binding:"required"`
@@ -27,20 +23,25 @@ type RegisterParam struct {
 }
 
 func Register(param RegisterParam) (ID interface{}, err error) {
-	client, err := mongo.NewClient(options.Client().ApplyURI(MongodbUri))
+	client, err := mongo.NewClient(options.Client().ApplyURI(base.MongodbUri))
 	if err != nil {
 		log.Println("fail to get a new client.")
 		return
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
+	defer func() {
+		if err := client.Disconnect(ctx); err != nil {
+			panic(err)
+		}
+	}()
 	err = client.Connect(ctx)
 	if err != nil {
 		log.Println("fail to connect to a client.")
 		return
 	}
 
-	collection := client.Database(DatabaseBlog).Collection(CollectionAccount)
+	collection := client.Database(base.DatabaseBlog).Collection(base.CollectionAccount)
 	accountInfo := api.AccountInfo{
 		ID:       primitive.NewObjectID(),
 		MID:      "1",
