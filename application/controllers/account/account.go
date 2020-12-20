@@ -42,3 +42,17 @@ func Login(context *gin.Context) {
 func MyPanic(context *gin.Context) {
 	myPanic(context)
 }
+
+// Logoff godoc
+// @Summary Logoff
+// @Description Logoff an account by name and password.
+// @Tags account
+// @Accept json
+// @Produce json
+// @Param LogoffParam body account.LogoffParam true "required param."
+// @Success 200 {object} base.BasedResponse
+// @Header 200 {string} Token "qwerty"
+// @Router /account/logoff [DELETE]
+func Logoff(context *gin.Context) {
+	logoff(context)
+}

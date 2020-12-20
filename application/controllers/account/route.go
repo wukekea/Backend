@@ -16,7 +16,7 @@ func InitWith(ginObject *gin.Engine) {
 	group.POST("/login", Login)
 	group.PUT("/register", Register)
 	group.GET("/panic", MyPanic)
-
+	group.DELETE("/logoff", Logoff)
 
 
 }
