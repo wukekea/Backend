@@ -56,3 +56,17 @@ func MyPanic(context *gin.Context) {
 func Logoff(context *gin.Context) {
 	logoff(context)
 }
+
+// ModifyAccountInfo godoc
+// @Summary ModifyAccountInfo
+// @Description Modify an account by id.
+// @Tags account
+// @Accept json
+// @Produce json
+// @Param ModifyAccountInfoParam body account.ModifyAccountInfoParam true "required param."
+// @Success 200 {object} base.BasedResponse
+// @Header 200 {string} Token "qwerty"
+// @Router /account/modify_info [POST]
+func ModifyAccountInfo(context *gin.Context) {
+	modifyAccountInfo(context)
+}
